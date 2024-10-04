@@ -6,6 +6,7 @@ import morgan from 'morgan';
 
 
 const app = express();
+const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
@@ -34,4 +35,16 @@ app.post('/api/register', async (req, res) => {
 
 app.listen(5000, () => {
   console.log('Server is running on port 5000');
+});
+
+// Middleware
+app.use(cors()); // Mengizinkan CORS
+app.use(morgan('dev')); // Logging permintaan ke konsol
+app.use(bodyParser.json()); // Parsing JSON
+
+// Routes
+// Tambahkan rute Anda di sini
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
